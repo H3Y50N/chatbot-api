@@ -7,19 +7,28 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// CORS configuration
+app.use(
+  cors({
+    origin: "*", // allow requests from Netlify frontend
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 
-// Root route
+// Health check route
 app.get("/", (req, res) => {
   res.send("Zedpea Chatbot API is running 🚀");
 });
 
-// Chat API
+// Chat API route
 app.use("/api", chatRoute);
 
+// Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });

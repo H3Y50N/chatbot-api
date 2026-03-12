@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const router = express.Router();
-const API_KEY = process.env.GEMINI_API_KEY;
+const API_KEY = process.env.VITE_GEMINI_API_KEY;
 
 router.post('/chat', async (req, res) => {
   try {

@@ -12,15 +12,14 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 
-// Health check route
+// Root route
 app.get("/", (req, res) => {
-  res.send("Zedpea Chatbot API Running 🚀");
+  res.send("Zedpea Chatbot API is running 🚀");
 });
 
-// Chatbot API route
+// Chat API
 app.use("/api", chatRoute);
 
-// Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
